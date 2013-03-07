@@ -176,7 +176,7 @@ Children:
           name: Output Channel (PWM)
           validators: *id005
           value: '4'
-    - Name: CanonHeightMotor
+    - Name: CanonHeightMotor2
       Base: Speed Controller
       Children: []
       Properties:
@@ -616,4 +616,4 @@ Properties:
     name: Export Commands, validators: null, value: true}
   Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Robotics4\NetBeansProjects',
     extension: null, folder: true, name: Java Project Directory, validators: null,
-    value: 'C:\Users\Robotics4\NetBeansProjects'}
+    value: 'C:\Users\Robotics4\Documents\FRC-2013-Piranha.git'}
