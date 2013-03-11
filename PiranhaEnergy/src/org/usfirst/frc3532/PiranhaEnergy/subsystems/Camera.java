@@ -29,12 +29,18 @@ public class Camera extends Subsystem {
 	
     }
     
+    public void setAngle( double newAngle) {
+        motor.setAngle(newAngle);
+        System.out.print("Setting camera angle to ");
+        System.out.println(newAngle);
+     
+    }
     public void raise() {
         angle += 5.0;
-        motor.setAngle(angle);
+        setAngle(angle);
     }
     public void lower() {
         angle -= 5.0;
-        motor.setAngle(angle);
+        setAngle(angle);
     }
 }

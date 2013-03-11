@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in th future.
 package org.usfirst.frc3532.PiranhaEnergy.commands;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3532.PiranhaEnergy.Robot;
 /**
@@ -26,7 +27,9 @@ public class  LowerCamera extends Command {
     protected void initialize() {
     }
     // Called repeatedly when this Command is scheduled to run
+
     protected void execute() {
+        System.out.println("LowerCamera");
         Robot.camera.lower();
     }
     // Make this return true when this Command no longer needs to run execute()

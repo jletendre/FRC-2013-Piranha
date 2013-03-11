@@ -19,6 +19,8 @@ public class  ShootDisk extends Command {
     double pushTime;
     double pushSpeed;
     double returnTime;
+    double returnSpeed;
+    int step;
     
     public ShootDisk() {
         // Use requires() here to declare subsystem dependencies
@@ -30,18 +32,26 @@ public class  ShootDisk extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        pushTime = Preferences.getInstance().getDouble("PushDiskTime", 0.25);
-        pushSpeed = Preferences.getInstance().getDouble("PushDiskSpeed", 0.1);
-        returnTime = Preferences.getInstance().getDouble("ReturnTime", 0.25);
-
+        pushTime = Preferences.getInstance().getDouble("PushDiskTime", 0.5);
+        pushSpeed = Preferences.getInstance().getDouble("PushDiskSpeed", 0.7);
+        returnTime = Preferences.getInstance().getDouble("ReturnTime", 0.7);
+        returnSpeed = Preferences.getInstance().getDouble("ReturnSpeed", 0.3);
+        step = 0;
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
-        Robot.canon.pushLaunchArm(pushSpeed);
-        Timer.delay(pushTime);
-        Robot.canon.returnLaunchArm(pushSpeed);
-        setTimeout(returnTime);
+        if(step == 0)
+        {
+            Robot.canon.pushLaunchArm(pushSpeed);
+            System.out.print("Pushing for ");
+            System.out.println(pushTime);
+            Timer.delay(pushTime);
+            Robot.canon.returnLaunchArm(returnSpeed);
+            System.out.print("Pulling for ");
+            System.out.println(returnTime);
+            setTimeout(returnTime);
+            step = 1;
+        }
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
