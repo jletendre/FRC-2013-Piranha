@@ -69,16 +69,16 @@ public class Canon extends Subsystem {
             motorBack.set(speed);
         }
    }
-    public void pushLaunchArm() {
-        pushDisk.set(0.1); 
+    public void pushLaunchArm(double speed) {
+        pushDisk.set(speed); 
     }
     public void stopLaunchArm() {     
         pushDisk.set(0.0);  
     }
-    public void returnLaunchArm() { 
-        pushDisk.set(-0.1);
+    public void returnLaunchArm(double speed) { 
+        pushDisk.set(-speed);
     }
-    public void turnLoaderWheels() {
+    public void turnLoaderWheels(double speed) {
         loadDisk.set(0.1); 
     }
     public void stopLoaderWheels() {     

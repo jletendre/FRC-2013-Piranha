@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in th future.
 package org.usfirst.frc3532.PiranhaEnergy.commands;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3532.PiranhaEnergy.Robot;
@@ -15,6 +16,10 @@ import org.usfirst.frc3532.PiranhaEnergy.Robot;
  *
  */
 public class  ShootDisk extends Command {
+    double pushTime;
+    double pushSpeed;
+    double returnTime;
+    
     public ShootDisk() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -25,13 +30,18 @@ public class  ShootDisk extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+        pushTime = Preferences.getInstance().getDouble("PushDiskTime", 0.25);
+        pushSpeed = Preferences.getInstance().getDouble("PushDiskSpeed", 0.1);
+        returnTime = Preferences.getInstance().getDouble("ReturnTime", 0.25);
+
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.canon.pushLaunchArm();
-        Timer.delay(.25);
-        Robot.canon.returnLaunchArm();
-        setTimeout(.25);
+        
+        Robot.canon.pushLaunchArm(pushSpeed);
+        Timer.delay(pushTime);
+        Robot.canon.returnLaunchArm(pushSpeed);
+        setTimeout(returnTime);
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

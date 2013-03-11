@@ -45,8 +45,8 @@ public class RobotMap {
         driveTrainRobotDrive21.setSensitivity(0.5);
         driveTrainRobotDrive21.setMaxOutput(1.0);
         
-        canonPushDisk = new Victor(1, 6);
-	LiveWindow.addActuator("Canon", "PushDisk", (Victor) canonPushDisk);
+        canonPushDisk = new Jaguar(1, 6);
+	LiveWindow.addActuator("Canon", "PushDisk", (Jaguar) canonPushDisk);
         
         canonLoadDisk = new Victor(1, 5);
 	LiveWindow.addActuator("Canon", "LoadDisk", (Victor) canonLoadDisk);
