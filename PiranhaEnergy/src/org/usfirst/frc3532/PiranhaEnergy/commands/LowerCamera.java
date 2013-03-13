@@ -27,7 +27,6 @@ public class  LowerCamera extends Command {
     protected void initialize() {
     }
     // Called repeatedly when this Command is scheduled to run
-
     protected void execute() {
         System.out.println("LowerCamera");
         Robot.camera.lower();
